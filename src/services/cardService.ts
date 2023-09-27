@@ -10,8 +10,8 @@ export const getCardList = () => {
     if (localStoredCards) {
       myCards = localStoredCards as ICard[];
     } else {
-      myCards = cards;
-      LocalStorage.set('cards', cards);
+      myCards = cards.slice(0);
+      LocalStorage.set('cards', cards.slice(0));
     }
     resolve(myCards);
   });

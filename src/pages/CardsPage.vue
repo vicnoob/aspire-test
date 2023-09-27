@@ -1,6 +1,6 @@
 <template>
   <!-- Desktop view -->
-  <q-page v-if="!$q.screen.lt.lg" class="card-page-desktop">
+  <q-page v-if="isDesktopView" class="card-page-desktop">
     <div class="card-page-desktop__overview">
       <div class="card-page-desktop__overview-title">
         <span class="card-page-desktop__overview-title-text">
@@ -8,7 +8,7 @@
         </span>
       </div>
       <div class="card-page-desktop__overview-info">
-        <BalanceCompoent />
+        <BalanceComponent />
         <button
           @click="newCardIsOpened = true"
           class="card-page-desktop__overview-info-btn"
@@ -40,7 +40,7 @@
                 name="myCards"
                 class="card-page-desktop__overview-tab-panel"
               >
-                <CardSlider v-if="!$q.screen.lt.lg" ref="cardSliderRef" />
+                <CardSlider ref="cardSliderRef" />
 
                 <div v-if="currentCard" class="card-page-desktop__card-detail">
                   <CardActionBtn
@@ -69,14 +69,14 @@
   </q-page>
 
   <!-- Mobile view -->
-  <q-page v-if="$q.screen.lt.lg" class="card-page">
+  <q-page v-if="!isDesktopView" class="card-page">
     <div class="card-page__overview">
       <div class="card-page__overview-title">
         <span class="card-page__overview-title-text"> Account balance </span>
         <logo class="card-page__overview-title-logo" />
       </div>
       <div class="card-page__overview-info">
-        <BalanceCompoent />
+        <BalanceComponent />
         <button
           @click="newCardIsOpened = true"
           class="card-page__overview-info-btn"
@@ -97,7 +97,7 @@
         animated
       >
         <q-tab-panel name="myCards" class="card-page__overview-tab-panel">
-          <CardSlider v-if="$q.screen.lt.lg" ref="cardSliderRef" />
+          <CardSlider ref="cardSliderRef" />
         </q-tab-panel>
 
         <q-tab-panel name="allCards" class="card-page__overview-tab-panel">
@@ -123,7 +123,7 @@
 <script setup lang="ts">
 import Logo from 'assets/Logo.svg';
 import PlusCircle from 'assets/PlusCircle.svg';
-import BalanceCompoent from 'components/pages/cards/BalanceComponent.vue';
+import BalanceComponent from 'components/pages/cards/BalanceComponent.vue';
 import CardDetailExpansionZone from 'components/pages/cards/CardDetailExpansionZone.vue';
 import CardSlider from 'components/pages/cards/CardSlider.vue';
 import { Dialog } from 'quasar';
@@ -132,18 +132,24 @@ import CardActionBtn from 'src/components/pages/cards/CardActionBtn.vue';
 import { CardStatus } from 'src/models/card';
 import { useCardStore } from 'src/stores/cards';
 import { computed, ref } from 'vue';
+import { useQuasar } from 'quasar';
 
 const { getCards, changeCardStatus, cancelCard } = useCardStore();
 getCards();
 const tab = ref('myCards');
 const newCardIsOpened = ref(false);
 const cardSliderRef = ref<InstanceType<typeof CardSlider>>();
-const currentCard = computed(() => cardSliderRef.value?.currentCard);
-import { useQuasar } from 'quasar';
+const currentCard = computed(() => {
+  return cardSliderRef.value?.currentCard;
+});
 
 const $q = useQuasar();
-
-$q.screen.setSizes({ lg: 1024 });
+$q.screen.setSizes({
+  lg: 1024,
+});
+const isDesktopView = computed(() => {
+  return !$q.screen.lt.lg;
+});
 const onFreezeChange = () => {
   Dialog.create({
     title: 'Confirmation',

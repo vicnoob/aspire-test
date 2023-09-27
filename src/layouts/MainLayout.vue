@@ -12,6 +12,7 @@
           class="app-layout__drawer__item"
           exact-active-class="app-layout__footer__tab--active"
           content-class="app-layout__footer__tab__content"
+          manual-focus
           exact
           :to="tab.to"
         >

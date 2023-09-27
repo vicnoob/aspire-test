@@ -1,7 +1,11 @@
 <template>
   <div class="card-action-btns">
-    <button class="card-action-btns__btn">
-      <FreezeCard @click="$emit('freezeCard')" class="card-action-btns__icon" />
+    <button
+      id="freezeBtn"
+      @click="$emit('freezeCard')"
+      class="card-action-btns__btn"
+    >
+      <FreezeCard class="card-action-btns__icon" />
       <span>
         {{ currentCard?.status === 'active' ? 'Freeze Card' : 'Unfreeze Card' }}
       </span>
@@ -18,7 +22,11 @@
       <ReplaceCard class="card-action-btns__icon" />
       <span> Replace Card </span>
     </button>
-    <button @click="$emit('cancelCard')" class="card-action-btns__btn">
+    <button
+      id="cancelBtn"
+      @click="$emit('cancelCard')"
+      class="card-action-btns__btn"
+    >
       <DeactivateCard class="card-action-btns__icon" />
       <span> Cancel Card </span>
     </button>
