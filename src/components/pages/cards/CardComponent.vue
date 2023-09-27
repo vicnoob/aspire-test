@@ -100,7 +100,7 @@ const isFrozen = computed(() => props.card?.status === 'inactive');
     }
 
     &__show-card-number {
-      @apply flex pt-2 opacity-0  absolute -top-[0.5rem] right-0 bg-white text-brand h-10 px-4 pb-2 text-xs font-semibold rounded-xl rounded-b-none;
+      @apply flex pt-2 opacity-0  absolute -top-[0.5rem] right-0 bg-white text-brand h-10 px-4 pb-2 text-xs font-semibold lg:font-bold rounded-xl rounded-b-none;
 
       &--visible {
         @apply opacity-100  transition-all duration-500;
@@ -114,6 +114,10 @@ const isFrozen = computed(() => props.card?.status === 'inactive');
     &__info {
       &__logo-wrapper {
         @apply flex justify-end;
+      }
+
+      &__aspire-logo {
+        @apply w-[74px] h-[21px];
       }
 
       &__holder {

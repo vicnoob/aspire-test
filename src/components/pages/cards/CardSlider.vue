@@ -9,7 +9,6 @@
         @activeIndexChange="onActiveIndexChange"
         :pagination="{
           el: '.swiper-pagination',
-
           clickable: true,
         }"
       >
@@ -69,7 +68,7 @@ defineExpose({ currentCard });
 <style lang="scss">
 .cards {
   .swiper {
-    @apply pt-4;
+    @apply pt-4 lg:pt-0;
   }
   .swiper-pagination-bullet {
     @apply bg-brand opacity-10 transition-all duration-300;

@@ -15,7 +15,7 @@
   }
 
   &__amount {
-    @apply text-white text-xl font-bold;
+    @apply text-white lg:text-black text-xl font-bold;
   }
 }
 </style>

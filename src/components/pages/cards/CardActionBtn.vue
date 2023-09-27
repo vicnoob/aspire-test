@@ -37,7 +37,7 @@ defineProps(['currentCard']);
 
 <style lang="scss">
 .card-action-btns {
-  @apply bg-[#EDF3FF] text-[#0C365A] text-[13px] flex py-5 px-4 rounded-t-3xl;
+  @apply bg-[#EDF3FF] text-[#0C365A] text-[13px] flex py-5 px-4 rounded-t-3xl lg:rounded-3xl lg:mt-10;
 
   &__btn {
     @apply flex-1 flex flex-col justify-start items-center px-1 text-center;
