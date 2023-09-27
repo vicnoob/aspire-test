@@ -70,6 +70,10 @@ defineExpose({ currentCard });
   .swiper {
     @apply pt-4 lg:pt-0;
   }
+
+  .swiper-slide {
+    @apply lg:pt-2;
+  }
   .swiper-pagination-bullet {
     @apply bg-brand opacity-10 transition-all duration-300;
   }

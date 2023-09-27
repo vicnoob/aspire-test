@@ -1,5 +1,6 @@
 <template>
-  <q-page class="card-page-desktop">
+  <!-- Desktop view -->
+  <q-page v-if="!$q.screen.lt.lg" class="card-page-desktop">
     <div class="card-page-desktop__overview">
       <div class="card-page-desktop__overview-title">
         <span class="card-page-desktop__overview-title-text">
@@ -67,7 +68,8 @@
     </div>
   </q-page>
 
-  <q-page class="card-page">
+  <!-- Mobile view -->
+  <q-page v-if="$q.screen.lt.lg" class="card-page">
     <div class="card-page__overview">
       <div class="card-page__overview-title">
         <span class="card-page__overview-title-text"> Account balance </span>
@@ -191,7 +193,7 @@ const onCancelCard = () => {
 
 <style lang="scss" scoped>
 .card-page-desktop {
-  @apply hidden lg:block p-[60px];
+  @apply p-[60px];
 
   &__overview {
     @apply sticky top-0;
@@ -208,7 +210,8 @@ const onCancelCard = () => {
     }
 
     &-card {
-      @apply mt-4 p-9;
+      @apply mt-4 p-9 shadow-none;
+      filter: drop-shadow(0px 2px 12px #00000014);
     }
 
     &-info {
@@ -256,7 +259,7 @@ const onCancelCard = () => {
   }
 }
 .card-page {
-  @apply bg-[#0C365A] block lg:hidden;
+  @apply bg-[#0C365A];
   &__overview {
     @apply px-6  pb-10 sticky top-0;
     &-title {

@@ -17,15 +17,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import TransactionItem from './TransactionItem.vue';
-import {
-  ITransaction,
-  TransactionCategory,
-  TransactionType,
-} from 'src/models/transaction';
 import { useCardStore } from 'src/stores/cards';
 const cardStore = useCardStore();
 const transactions = computed(() => cardStore.transactions);
-// const transactions = ref<ITransaction[]>([]);
 defineExpose({
   transactions,
 });
